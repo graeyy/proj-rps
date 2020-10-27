@@ -3,25 +3,40 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
+<html lang='en'>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Rps</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&family=Roboto&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <div id='btns'>
-            <button id='rockBtn'>Rock</button>
-            <button id='paperBtn'>Paper</button>
-            <button id='scissorsBtn'>Scissors</button>
-        </div>
-        <div id='result'>
-            results:
-        </div>
-        
+        <main>
+            <div id='btns'>
+                <button id='rockBtn'>Rock</button>
+                <button id='paperBtn'>Paper</button>
+                <button id='scissorsBtn'>Scissors</button>
+            </div>
+            <div id='userImg'>
+                <img src='#' id='pImg' alt='user img'>
+            </div>
+            
+            <div id='scrBoard'>
+                <h1 id='round'>Round </h1>
+                <h2 id='scores'>0 - 0</h2>
+                <h3 id='drawCnt'>Draws: 0</h3>
+            </div>
+            <div id='cpuImg'>
+                <img src='#' id='oppImg' alt='cpu img'>
+            </div>
+            <div id='result'>
+                Results: 
+            </div>
+        </main>
+
         <script src="rps.js" async defer></script>
     </body>
 </html>

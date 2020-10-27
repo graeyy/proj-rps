@@ -48,8 +48,9 @@ buttons.forEach((button) => {
     button.addEventListener('click', () => {
         let playerSelection = button.innerHTML;
         let computerSelection = computerPlay();
-        actionInfo(playerSelection, computerSelection);
+        //actionInfo(playerSelection, computerSelection);
         playRound(playerSelection, computerSelection);
+        setImg(playerSelection, computerSelection);
     })
 })
 
@@ -66,12 +67,18 @@ function actionInfo(playerSelection, computerSelection) {
 function getResult(res) {
     const result = document.createElement('p');
     result.classList.add('content');
-    result.textContent = res;
+    result.textContent = (i+1) + ': ' + res;
     resContainer.appendChild(result);
 
+    resContainer.scrollTop = resContainer.scrollHeight;
+
     getScore(res);
+    checkForWin(pWin, cpuWin);
 
 }
+
+const scrBoard = document.querySelector('#scrBoard');
+
 
 function getScore(res) {
     i++;
@@ -83,10 +90,64 @@ function getScore(res) {
         cpuWin += 1;
     }
 
-    var score = "Round: " + i + " Player: " + pWin + " CPU: " + cpuWin + " Draw: " + cntDraw;
+    setRoundDetails(i, pWin, cpuWin, cntDraw);
+}
 
-    const scoreboard = document.createElement('p');
-    scoreboard.classList.add('content');
-    scoreboard.textContent = score;
-    resContainer.appendChild(scoreboard);
+var usr = document.getElementById('pImg');
+var cpu = document.getElementById('oppImg');
+
+function setImg(playerSelection, computerSelection){
+    var user = playerSelection.toLowerCase();
+    usr.src = '/img/' + user + '.png';
+    //usr.height = '300';
+    //usr.width = '300';
+
+    cpu.src = '/img/' + computerSelection + '.png';
+    //cpu.height = '300';
+    //cpu.width = '300';
+
+}
+
+function checkForWin(userWin, oppWin) {
+    var msg = '';
+    var winnerExists = true;
+    if (userWin == 5) {
+        msg = 'User has won!';
+    } else if (oppWin == 5) {
+        msg = 'Computer has won!';
+    } else {
+        winnerExists = false;
+    }
+
+    if (winnerExists) {
+        if (confirm(msg + ". Would you like to reset and play again?")) {
+            window.alert('resetting eveerything');
+            i = 0;
+            pWin = 0;
+            cpuWin = 0;
+            cntDraw = 0;
+            setRoundDetails(i, pWin, cpuWin, cntDraw);
+
+            usr.src = '#';
+            cpu.src = '#';
+        } else {
+            window.alert('you chose not to play again. refresh page manually')
+        }
+    }
+    
+}
+
+function setRoundDetails(round, userWin, oppWin, draw) {
+    // TODO: fix variables and arguments(some are repetitive + redundant)
+    var roundNum = document.getElementById('round');
+    var scores = document.getElementById('scores');
+    var draws = document.getElementById('drawCnt');
+
+    var score = userWin + ' - ' + oppWin;
+
+    roundNum.innerHTML = 'Round ' + round;
+    scores.innerHTML = score;
+    draws.innerHTML = 'Draws: ' + draw;
+
+
 }
