@@ -27,11 +27,12 @@
         background-color: #FF5B44;
         color: white;
         font-style: 'Roboto', sans-serif;
+        font-size: 1em;
         font-weight: 800;
         letter-spacing: 2px;
         text-transform: uppercase;
         padding: 10px;
-        width: 10vw;
+        min-width: 10vw;
         border-radius: 3px;
         border: 1px solid transparent;
         cursor: pointer;
@@ -90,7 +91,7 @@
     }
 
     #result > h1 {
-        font-size: 18px;
+        font-size: 1.5rem;
     }
 
     body {
@@ -114,5 +115,26 @@
     main > div {
         border: 1px solid black;
         padding: 10px;
+    }
+
+    @media screen and (max-width: 801px) {
+        main {
+            width: 95vw;
+            margin: 0 10px;
+            padding: 10px;
+        }
+        body {
+            margin: 0 auto;
+        }
+
+        #userImg > img {
+            width: 80%;
+            height: 80%;
+        }
+
+        #cpuImg > img {
+            width: 80%;
+            height: 80%;
+        }
     }
 }
