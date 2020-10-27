@@ -98,11 +98,11 @@ var cpu = document.getElementById('oppImg');
 
 function setImg(playerSelection, computerSelection){
     var user = playerSelection.toLowerCase();
-    usr.src = '/img/' + user + '.png';
+    usr.src = 'img/' + user + '.png';
     //usr.height = '300';
     //usr.width = '300';
 
-    cpu.src = '/img/' + computerSelection + '.png';
+    cpu.src = 'img/' + computerSelection + '.png';
     //cpu.height = '300';
     //cpu.width = '300';
 
