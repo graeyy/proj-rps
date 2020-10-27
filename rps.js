@@ -120,21 +120,20 @@ function checkForWin(userWin, oppWin) {
     }
 
     if (winnerExists) {
-        if (confirm(msg + ". Would you like to reset and play again?")) {
-            window.alert('resetting eveerything');
-            i = 0;
-            pWin = 0;
-            cpuWin = 0;
-            cntDraw = 0;
-            setRoundDetails(i, pWin, cpuWin, cntDraw);
+        window.alert(msg + ' Results will now reset.');
+        i = 0;
+        pWin = 0;
+        cpuWin = 0;
+        cntDraw = 0;
+        setRoundDetails(i, pWin, cpuWin, cntDraw);
 
-            usr.src = '#';
-            cpu.src = '#';
-        } else {
-            window.alert('you chose not to play again. refresh page manually')
-        }
+        usr.src = '#';
+        cpu.src = '#';
+
+        var foo = document.getElementById('result');
+        while (foo.lastChild.id != 'resultLbl') foo.removeChild(foo.lastChild);
     }
-    
+
 }
 
 function setRoundDetails(round, userWin, oppWin, draw) {

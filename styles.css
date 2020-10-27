@@ -89,6 +89,10 @@
         font-family: 'Roboto', sans-serif;
     }
 
+    #result > h1 {
+        font-size: 18px;
+    }
+
     body {
         margin: 10px;
     }
