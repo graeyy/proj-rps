@@ -3,6 +3,7 @@ let i = 0;
 var pWin = 0;
 var cpuWin = 0;
 var cntDraw = 0;
+var reset = false;
 function playRound(playerSelection, computerSelection) {
 
     // * makes input case-insensitive
@@ -50,7 +51,16 @@ buttons.forEach((button) => {
         let computerSelection = computerPlay();
         //actionInfo(playerSelection, computerSelection);
         playRound(playerSelection, computerSelection);
-        setImg(playerSelection, computerSelection);
+        /**
+         * * pressing ok on reset alert somehow counts as button click (??)
+         * TODO: fix picture reset without reset boolean
+         */
+        if (!reset) {
+            setImg(playerSelection, computerSelection);
+        } else {
+            reset = false;
+        }
+        console.log("button click");
     })
 })
 
@@ -96,15 +106,17 @@ function getScore(res) {
 var usr = document.getElementById('pImg');
 var cpu = document.getElementById('oppImg');
 
-function setImg(playerSelection, computerSelection){
-    var user = playerSelection.toLowerCase();
+function setImg(playerImg, cpuImg){
+    var user = playerImg.toLowerCase();
     usr.src = 'img/' + user + '.png';
     //usr.height = '300';
     //usr.width = '300';
 
-    cpu.src = 'img/' + computerSelection + '.png';
+    cpu.src = 'img/' + cpuImg + '.png';
     //cpu.height = '300';
     //cpu.width = '300';
+    
+    console.log(playerImg, cpuImg);
 
 }
 
@@ -126,9 +138,10 @@ function checkForWin(userWin, oppWin) {
         cpuWin = 0;
         cntDraw = 0;
         setRoundDetails(i, pWin, cpuWin, cntDraw);
+        reset = true;   
+        setImg("user", "cpu");
 
-        usr.src = '#';
-        cpu.src = '#';
+        console.log("reset");
 
         var foo = document.getElementById('result');
         while (foo.lastChild.id != 'resultLbl') foo.removeChild(foo.lastChild);

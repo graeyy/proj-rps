@@ -117,14 +117,24 @@
         padding: 10px;
     }
 
-    @media screen and (max-width: 801px) {
+    @media screen and (max-width: 768px) {
         main {
-            width: 95vw;
-            margin: 0 10px;
+            width: 100vw;
+            height: 100vh;
+            margin: auto;
             padding: 10px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 2fr 1fr 1fr 1fr;
+            grid-template-areas:
+                "userImg cpuImg"
+                "scrBoard scrBoard"
+                "btns btns"
+                "result result";
+            justify-content: center;
         }
+    
         body {
-            margin: 0 auto;
+            margin: auto;
         }
 
         #userImg > img {
